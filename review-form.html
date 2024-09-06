@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Review</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <style>
+    /* Basic styling for the review form */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      color: #333;
+      padding: 0;
+    }
+
+    header {
+      background-color: hsl(184, 50%, 60%);
+      padding: 20px 0;
+      color: white;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #e0e0e0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 3rem;
+      color: #007bff;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .submit-review-btn {
+      display: block;
+      width: 50%;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-left: 200px;
+    }
+
+    .submit-review-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .submit-review-btn:active {
+      transform: translateY(1px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <!-- Add other navigation links -->
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Submit Your Review</h1>
+      <form id="review-form">
+        <div class="form-group">
+          <label for="book-title">Book Title</label>
+          <input type="text" id="book-title" name="book-title" placeholder="Enter the book title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="review-text">Your Review</label>
+          <textarea id="review-text" name="review-text" rows="6" placeholder="Write your review here..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          <select id="rating" name="rating" required>
+            <option value="" disabled selected>Select rating</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-review-btn">Submit Review</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('review-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Retrieve form values
+      const bookTitle = document.getElementById('book-title').value;
+      const reviewText = document.getElementById('review-text').value;
+      const rating = document.getElementById('rating').value;
+
+      // Simple form validation
+      if (!bookTitle || !reviewText || !rating) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // For demonstration: Log form data to the console
+      console.log('Book Title:', bookTitle);
+      console.log('Review Text:', reviewText);
+      console.log('Rating:', rating);
+
+      // Here you would typically send the form data to your server
+      // For example: using fetch() to send POST request
+
+      alert('Thank you for your review!');
+      // Clear the form
+      document.getElementById('review-form').reset();
+    });
+  </script>
+</body>
+</html>
